@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Flashcard ,Subject
 from rest_framework.views import APIView
-from rest_framework.reponse import Response
+from rest_framework.responses import Response
 from django.http import Http404
 from .serializer import FlashcardSerializer, SubjectSerializer
 from permissions import IsAuthenticatedOrReadOnly
