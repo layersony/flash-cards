@@ -1,15 +1,13 @@
+
 from rest_framework import serializers
-from .models import flashcard, subject
+from .models import Flashcard,Subject
 
-
-class flashcardSerializer()
-     
-     class meta:
-         model = projects
-         fields = ['id', 'title','body','created', 'updated']
-
-class subject()
-
-    class meta:
-        model = profile 
-        fields = [ 'id', 'subject']
+class SubjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Subject
+        fields = ('id', 'subject',)
+class FlashcardSerializer(serializers.ModelSerializer):
+    subjects= SubjectSerializer 
+    class Meta:
+        model = Flashcard
+        fields = ('title', 'id','body', 'created', 'updated','subjects',)   
