@@ -9,7 +9,7 @@ from .serializer import FlashcardSerializer, SubjectSerializer
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
-class FlashcardsAll(APIView): # all flashcards
+class FlashcardsAll(APIView): # all flashcards GET POST
   permission_classes = (IsAuthenticated,)
 
   def get(self, request, format=None):
@@ -24,7 +24,7 @@ class FlashcardsAll(APIView): # all flashcards
           return Response(serializers.data, status=status.HTTP_201_CREATED)
       return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)  
 
-class FlashCardsList(APIView): # get specific one
+class FlashCardsList(APIView): # get specific one UPDATE DELETE
     permission_classes = (IsAuthenticated,)
 
     def get_merch(self, pk):
@@ -53,7 +53,7 @@ class FlashCardsList(APIView): # get specific one
         merch = self.get_merch(pk)
         merch.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-class SublectList(APIView): # Get specific one
+class SublectList(APIView): # Get specific one UPDATE DELETE
     permission_classes = (IsAuthenticated,)
     def get_merch(self, pk):
         try:
@@ -82,7 +82,7 @@ class SublectList(APIView): # Get specific one
         merch.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-class SublectAll(APIView): # GET ALL 
+class SublectAll(APIView): # GET ALL  GET POST
   permission_classes = (IsAuthenticated,)
   def get(self, request, format=None):
     all_merch = Subject.objects.all()

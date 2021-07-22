@@ -22,7 +22,7 @@ class Flashcard(models.Model):
   title = models.CharField(max_length=200, null=False)
   body = models.CharField(max_length=1000, null=False)
   created = models.DateTimeField(auto_now_add=True)
-  updated = models.DateTimeField(auto_now_add=True)
+  updated = models.DateTimeField(auto_now=True)
   subjects = models.ForeignKey(Subject, null=False, on_delete=models.CASCADE)
 
   def __str__(self):
